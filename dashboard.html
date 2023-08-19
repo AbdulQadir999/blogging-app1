@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <div>
+      <h3>Persnal Blogging App</h3>
+    </div>
+    <h1>Dashboard</h1>
+
+    <div class="blog">
+      <div>
+        <input type="text" placeholder="PlaceHolder" class="blog1" />
+      </div>
+      <div>
+        <input type="text" placeholder="PlaceHolder" class="blog2" />
+      </div>
+      <button type="submit" class="button-86">Publish Blog</button>
+    </div>
+
+    <script>
+      function cheackUSer() {
+       const MylocalStorage = localStorage.getItem("session")
+       if (MylocalStorage === null) {
+         var relativePath = "index.html";
+         // Construct the full URL dynamically
+         var currentURL = window.location.href;
+         var lastIndex = currentURL.lastIndexOf("/");
+         var parentURL = currentURL.substring(0, lastIndex);
+         var fullURL = parentURL + "/" + relativePath;
+         window.location.href = fullURL;
+       }
+     }
+     cheackUSer();
+   </script>
+  </body>
+</html>

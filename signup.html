@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>SignUp Page</title>
+  </head>
+
+  <body>
+    <nav class="navbar">
+      <div>
+        <h3>Persnal Blogging App</h3>
+      </div>
+    </nav>
+    <div>
+      <h1>SignUp</h1>
+    </div>
+    <section class="expense-form-box" id="expense-form-box">
+      <form class="expense-form" id="sign-up">
+        <input type="text" id="name" class="date-input" placeholder="name" />
+        <input
+          type="text"
+          id="lname"
+          class="amount-input"
+          placeholder="lname"
+        />
+
+        <input
+          type="email"
+          class="category-input"
+          placeholder="email"
+          id="email"
+        />
+
+        <input
+          type="password"
+          id="pass"
+          class="details-input"
+          placeholder="Password"
+        />
+
+        <input
+          type="password"
+          id="second-form-payment-date-inp"
+          class="payment-date-input"
+          placeholder="Repeat Password"
+        />
+        <div class="first-form-btn">
+          <button type="submit" class="button-86">Sign up</button>
+        </div>
+      </form>
+      <a style="margin-top: 10px;" href="./index.html">Login</a>
+    </section>
+
+    <script>
+      function createAdmin() {
+        const obj = {
+          name: "admin",
+          lname: "admin",
+          email: "Admin@gmail.com",
+          pass: "123456",
+          role: "admin",
+        };
+        console.log(obj);
+        localStorage.setItem("admin", JSON.stringify(obj));
+      }
+      createAdmin()
+      const signupForm = document.getElementById("sign-up");
+      signupForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        var name = document.getElementById("name").value;
+        var lname = document.getElementById("lname").value;
+        var email = document.getElementById("email").value;
+        var pass = document.getElementById("pass").value;
+
+        localStorage.setItem("name1", name);
+        localStorage.setItem("lname1", lname);
+        localStorage.setItem("email1", email);
+        localStorage.setItem("pass1", pass);
+
+        document.getElementById("name").value = "";
+        document.getElementById("lname").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("pass").value = "";
+
+        const obj = {
+          name: name,
+          lname: lname,
+          email: email,
+          pass: pass,
+          role: "admin",
+        };
+        console.log(obj);
+
+        localStorage.setItem("userDt", JSON.stringify(obj));
+
+        var relativePath = "index.html";
+        // Construct the full URL dynamically
+        var currentURL = window.location.href;
+        var lastIndex = currentURL.lastIndexOf("/");
+        var parentURL = currentURL.substring(0, lastIndex);
+        var fullURL = parentURL + "/" + relativePath;
+        window.location.href = fullURL;
+      });
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>

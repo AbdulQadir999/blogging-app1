@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Bootstrap CSS -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.3/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body class="login">
+    <nav>
+      <h3>Persnal Blogging App</h3>
+    </nav>
+    <h1>Login</h1>
+    <section class="first-form-box" id="login">
+      <form id="first-form">
+        <input
+          type="email"
+          required
+          class="my-input"
+          id="email"
+          placeholder="Enter your email"
+        />
+        <input
+          type="password"
+          required
+          class="my-input"
+          id="pass"
+          placeholder="Enter your password"
+        />
+        <div class="first-form-btn">
+          <button type="submit" class="button-86">Login</button>
+        </div>
+        <a style="margin-top: 10px;" href="./signup.html">Sign up</a>
+      </form>
+    </section>
+    <script>
+      function createAdmin() {
+        const obj = {
+          name: "admin",
+          lname: "admin",
+          email: "Admin@gmail.com",
+          pass: "123456",
+          role: "admin",
+        };
+        console.log(obj);
+        localStorage.setItem("admin", JSON.stringify(obj));
+      }
+      createAdmin();
+
+      const login = document.getElementById("login");
+      login.addEventListener("submit", (e) => {
+        e.preventDefault();
+        var email = document.getElementById("email").value;
+        var pass = document.getElementById("pass").value;
+        document.getElementById("email").value = "";
+        document.getElementById("pass").value = "";
+        if (email === "admin@gmail.com") {
+          var relativePath = "dashboard.html";
+          // Construct the full URL dynamically
+          var currentURL = window.location.href;
+          var lastIndex = currentURL.lastIndexOf("/");
+          var parentURL = currentURL.substring(0, lastIndex);
+          var fullURL = parentURL + "/" + relativePath;
+          window.location.href = fullURL;
+        } else {
+          var relativePath = "home.html";
+          // Construct the full URL dynamically
+          var currentURL = window.location.href;
+          var lastIndex = currentURL.lastIndexOf("/");
+          var parentURL = currentURL.substring(0, lastIndex);
+          var fullURL = parentURL + "/" + relativePath;
+          window.location.href = fullURL;
+        }
+        localStorage.setItem("session", true);
+      });
+    </script>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Bootstrap JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  </body>
+</html>
